@@ -55,7 +55,8 @@ class MBankPLParser(CsvStatementParser):
         sl.memo = re.sub("\s+", " ", ' '.join([line[5].strip("'"), line[4]]))
         
         # type - description
-        sl.payee = re.sub("\s+", " ", ' - '.join(line[2:4]))
+        # sl.payee = re.sub("\s+", " ", ' - '.join(line[2:4]))
+        sl.payee = re.sub("\s+", " ", line[3])
 
         # generate transaction id out of available data
         sl.id = statement.generate_transaction_id(sl)
